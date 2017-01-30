@@ -1,0 +1,10 @@
+applications:
+- disk_quota: 1024M
+  host: ais-demo-app
+  name: AIS Demo App
+  path: .
+  domain: mybluemix.net
+  instances: 1
+  memory: 5256M
+env:
+  NODE_ENV: bluemix

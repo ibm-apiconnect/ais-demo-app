@@ -1,0 +1,52 @@
+<span us-spinner="{radius:30, width:8, length: 16}" spinner-key="detailSpinner" spinner-start-active="true"></span>
+
+<div class="container" ng-hide="hideContainer">
+
+    <!-- Top Section -->
+    <div class="section group">
+
+        <!-- Item Image -->
+        <div class="col span_1_of_5">
+            <img class="item-tn" ng-src="{{item.img}}" />
+        </div>
+
+        <!-- Item Name / Price / Rating -->
+        <div class="col span_3_of_5">
+
+            <div class="detail-section-title">
+                {{item.Description}}
+            </div>
+
+            <div class="detail-section-other">
+                ${{item.Price}}
+            </div>
+
+        </div>
+
+    </div>
+
+    <div>
+        <hr>
+    </div>
+
+    <!-- Middle Section -->
+    <div class="section group">
+
+        <p class="detail-section-title">
+            Product Availability
+        </p>
+
+        <div class="section group">
+            <div class="col span_1_of_3">Store Location</div>
+            <div class="col span_1_of_3">In-Stock Quantity</div>
+            <div class="col span_1_of_3">Place Order</div>
+        </div>
+
+        <div ng-repeat="target in itemStock">
+            <div class="col span_1_of_3">{{target.StoreLocation}}</div>
+            <div class="col span_1_of_3">{{target.SOH}}</div>
+            <div class="col span_1_of_3"><button type="submit" ng-click="placeOrder(item.StockID, target.StoreLocation);">Order</button></div>
+        </div>
+    </div>
+
+</div>
