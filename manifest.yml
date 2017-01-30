@@ -5,6 +5,6 @@ applications:
   path: .
   domain: mybluemix.net
   instances: 1
-  memory: 5256M
+  memory: 256M
 env:
   NODE_ENV: bluemix
