@@ -97,34 +97,42 @@ angular
               });
         }
 
-        $scope.placeOrder = function(StockID, Location) {
+        $scope.placeOrder = function(newOrder, StockID, Location) {
 
-          startSpin(false);
+          if (typeof newOrder !== "undefined") {
+              startSpin(false);
 
-          console.log("Placing new order for " + StockID + " at location " + Location);
+              console.log("Placing new order for " + newOrder.quantity + " of " + StockID + " at location " + Location);
 
-          var options = {
-            urlBase: localStorageService.get("urlBase"),
-            headers: {
-                'Content-Type': "application/json"
-            }
-          };
+              var options = {
+                  urlBase: localStorageService.get("urlBase"),
+                  headers: {
+                      'Content-Type': "application/json"
+                  }
+              };
 
-          var reqBody = {
-              StockID: StockID,
-              StoreLocation: Location,
-              SOH: "1"
-          };
+              var reqBody = {
+                  StockID: StockID,
+                  StoreLocation: Location,
+                  SOH: newOrder.quantity
+              };
 
-          Think
-            .Order(options)
-            .save(reqBody)
-            .$promise
-            .then(function(orderRsp) {
-              alert("Order Placed\nConfirmation number: " + orderRsp.OrderNumber);
-              console.log("refreshing stock");
-              getItemStock();
-            })
+              Think
+                  .Order(options)
+                  .save(reqBody)
+                  .$promise
+                  .then(function (orderRsp) {
+                      $scope.orderConfirmation = orderRsp;
+                      console.log("refreshing stock");
+                      getItemStock();
+                  })
+          } else {
+              alert("Please select a quantity.");
+          }
+        };
+
+        $scope.closeOrderConfirmation = function() {
+            $scope.orderConfirmation = "undefined";
         };
 
         /* Initialize Page */

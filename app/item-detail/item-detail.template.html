@@ -29,7 +29,7 @@
         <hr>
     </div>
 
-    <!-- Middle Section -->
+    <!-- Orders Section -->
     <div class="section group">
 
         <p class="detail-section-title">
@@ -45,8 +45,49 @@
         <div ng-repeat="target in itemStock">
             <div class="col span_1_of_3">{{target.StoreLocation}}</div>
             <div class="col span_1_of_3">{{target.SOH}}</div>
-            <div class="col span_1_of_3"><button type="submit" ng-click="placeOrder(item.StockID, target.StoreLocation);">Order</button></div>
+            <div class="col span_1_of_3">
+                <select ng-model="newOrder.quantity">
+                    <option ng-selected="selected">1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+                <button type="submit" ng-click="placeOrder(newOrder, item.StockID, target.StoreLocation);">Order</button>
+            </div>
         </div>
+    </div>
+
+    <!-- Order Confirmation Popup -->
+    <div class="section group">
+
+        <div class="detail-section-other" ng-switch on="orderConfirmation">
+            <div ng-switch-when="undefined"></div>
+
+            <div class="order-confirmation-modal" ng-switch-default>
+
+                <p class="detail-section-title">
+                    Order Confirmation
+                </p>
+
+                <p>Order of {{orderConfirmation.SOH}} received at the {{orderConfirmation.StoreLocation}} location.</p>
+
+                <br/><br/>
+
+                <p>Your confirmation number is: {{orderConfirmation.OrderNumber}}</p>
+
+                <br/><br/>
+                <button type="submit" ng-click="closeOrderConfirmation();">Close</button>
+
+            </div>
+
+        </div>
+
     </div>
 
 </div>

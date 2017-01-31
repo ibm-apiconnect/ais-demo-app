@@ -190,3 +190,21 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.order-confirmation-modal {
+  position: absolute;
+  text-align: center;
+  background-image: linear-gradient(to bottom, #29b0d9 0, #1586c6 100%);
+  background-repeat: repeat-x;
+  background-color: #1586c6;
+  opacity: 0.8;
+  padding: 20px;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+}
+
+.order-confirmation-modal p {
+  color: black;
+}
