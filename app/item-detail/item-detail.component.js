@@ -135,6 +135,22 @@ angular
             $scope.orderConfirmation = "undefined";
         };
 
+        $scope.finCalc = function(amount) {
+
+            $scope.financingResult = "calculating";
+
+            var duration = 24;
+            var rate = 3.9;
+
+            var P = amount;
+            var N = duration;
+            var J = rate / 100;
+            J /= 12;
+            var K = 1 / (Math.pow(1 + J, N));
+            var quote = P * (J / (1 - K));
+            $scope.financingResult = Math.round(quote * 100) / 100;
+        };
+
         /* Initialize Page */
 
         if (configured()) {

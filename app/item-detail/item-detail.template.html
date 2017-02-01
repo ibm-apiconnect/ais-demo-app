@@ -21,6 +21,12 @@
                 ${{item.Price}}
             </div>
 
+            <div class="detail-section-other" ng-switch on="financingResult">
+                <a href ng-switch-when="undefined" ng-click="finCalc(item.Price);">Calculate Financing</a>
+                <div ng-switch-when="calculating">calculating...</div>
+                <div class="detail-financing-result" ng-switch-default>Monthly Payment:<br/>${{financingResult}} at 3.9% for 24 months</div>
+            </div>
+
         </div>
 
     </div>
