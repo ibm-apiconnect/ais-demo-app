@@ -49,11 +49,16 @@
         </div>
 
         <div ng-repeat="target in itemStock">
-            <div class="col span_1_of_3">{{target.StoreLocation}}</div>
+            <div class="col span_1_of_3">
+                <div ng-switch on="target.StoreLocation">
+                    <div ng-switch-when="Online">{{target.StoreLocation}}</div>
+                    <div ng-switch-default><a href="https://www.google.com/maps?q={{target.StoreLocation}}" target="_blank">{{target.StoreLocation}}</a></div>
+                </div>
+            </div>
             <div class="col span_1_of_3">{{target.SOH}}</div>
             <div class="col span_1_of_3">
                 <select ng-model="newOrder.quantity">
-                    <option ng-selected="selected">1</option>
+                    <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>

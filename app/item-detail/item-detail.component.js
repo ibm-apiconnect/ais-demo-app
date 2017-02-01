@@ -49,6 +49,9 @@ angular
           var formattedItemStockData = [];
 
           for (var i = 0; i < data.length; i++) {
+
+              //var link = (data[i].StoreLocation.trim() === "Online") ? "none" : "https://www.google.com/maps?q=" + data[i].StoreLocation.trim();
+
               var obj = {
                   StoreLocation: data[i].StoreLocation.trim(),
                   SOH: data[i].SOH.trim()
